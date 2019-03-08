@@ -19,6 +19,7 @@ urlpatterns=[
     url(r'^register/$',views.reg,name="register"),
     url(r'^accounts/profile/$',views.profile,name="profile"),
     url(r'^profile/$',views.ProfileView.as_view(),name="user_profile"),
+    url(r'^profile/(?P<username>[a-zA-Z0-9]+)$',views.get_user_profile,name="get_user_profile"),
     
-    
+
 ]

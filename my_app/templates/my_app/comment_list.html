@@ -3,7 +3,7 @@
 <div class="comments center post">
     <h1 class="commenttitle techfont">Comments :</h1>
        {% for comments in post.Comment.all %}
-           <div><strong>{{comments|title}}</strong>:{{comments.text|safe|linebreaksbr}}</div>
+           <div><strong><a href = "{% url 'my_app:get_user_profile' username=comments.author %}">{{comments|title}}</a></strong>:{{comments.text|safe|linebreaksbr}}</div>
         {% endfor %}
 </div>
 
