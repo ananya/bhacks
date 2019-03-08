@@ -1,16 +1,23 @@
+
 {% extends 'my_app/base.html' %}
 {% block body_block %}
 {% if registered %}
-<p>Thank u for registering !!</p>
+<p class="text-center">Thank u for registering !!</p>
 {% else %}
+<div class="row container" >
+<div class="col-md-4"></div>
+<div class="col-md-4"id="out" style="align-items:center">
 <form method="POST">
     {% csrf_token %}
     {{Userform.as_p}}
     {{Profileform.as_p}}
-    <input type="submit" value="Register">
+    <div class="text-center">
+    <input type="submit" value="Register" class="btn btn-primary btn-lg" id="but">
+    </div>
 </form>
-
-
+</div>
+<div class="col-md-4"> </div>
+</div>
 
 {% endif %}
 {% endblock %}  
