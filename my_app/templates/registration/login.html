@@ -4,9 +4,8 @@
 
 
 {% block body_block %}
-  <div class="jumbotron">
+  <div class="jumbotron text-center">
 
-    <h2>Please Login: </h2>
     <h3>(Must be SuperUser, please check admin for issues.)</h3>
     {% if form.errors %}
         <p>Your username and password didn't match.Please try again!</p>
@@ -15,8 +14,7 @@
     <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" class='btn btn-primary' value="Login" />
-        <input type="hidden" name="next" value="{{ next }}" />
+        <button type="submit" class='btn btn-lg btn-primary' value="Login"> <i class="fa fa-graduation-cap" aria-hidden="true"></i> Login</button>        <input type="hidden" name="next" value="{{ next }}" />
     </form>
   </div>
 {% endblock %}

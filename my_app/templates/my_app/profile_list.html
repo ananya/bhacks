@@ -8,7 +8,7 @@
            {% ifequal posts.author user %}
            
            <div class="post">
-           <div class="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
+           <div class="posttitle" id="postt"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
            <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div>
            <div><strong>{{posts.author|title}}</strong></div>
            {% if posts.publish_date %}
