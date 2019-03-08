@@ -9,7 +9,10 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+from django.shortcuts import render
+
 # Create your views here.
+
 class AboutView(TemplateView):
     template_name='About.html'
  
@@ -147,8 +150,15 @@ def reg(request):
 def profile(request):
     return redirect('my_app:post_list')
 
+
+
 class ProfileView(ListView):
     model=Post
     template_name="profile_list.html"
     
-   
+
+
+def get_user_profile(request, username):
+    user = User.objects.get(username=username)
+    post_list = Post.objects.all()
+    return render(request, 'my_app/user_profile.html', {"user":user, "post_list":post_list})
