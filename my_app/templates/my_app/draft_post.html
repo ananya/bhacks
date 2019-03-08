@@ -4,7 +4,7 @@
         {% for posts in post_list %}
         {% if not posts.publish_date %}
         <div class="post">
-                <p class ="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></p>
+                <p class ="posttitle"><a  href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></p>
                 <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div><br>
                 <h5><strong>{{posts.author|title}}</strong></h5>
                 <h5>{{posts.create_date}}</h5>

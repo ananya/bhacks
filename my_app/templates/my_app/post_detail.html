@@ -2,7 +2,7 @@
 {% block body_block %}
 
 <div class="post center ">
-       <div class="posttitle"><a class="loader"><b>{{post.title|title}}</b></a></div>
+       <div class="posttitle"><a ><b>{{post.title|title}}</b></a></div>
        <p class='posttext' >{{ post.text|safe|linebreaksbr }}</p>
        <div><strong>{{post.author|title}}</strong></div>
        {% ifequal post.author user %}

@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
         fields=('title','text')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'textinputclass'}),
+            'title': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
             'text': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
         }
 
@@ -34,4 +34,4 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta():
         model=User_info
-        fields=('profilepic',)
+        fields=('profilepic','type_of_user')

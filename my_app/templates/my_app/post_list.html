@@ -4,7 +4,7 @@
     {% for posts in post_list %}
       {% if posts.publish_date %}
         <div class="post">
-        <div class="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
+        <div class="posttitle"><a  href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
         <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div>
         <div id="post_title"><strong>{{posts.author|title}}</strong></div>
         <div class="date">{{posts.publish_date}}</div>
