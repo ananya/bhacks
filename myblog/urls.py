@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'',include('my_app.urls')),
     #url(r'^register$',views.reg,name="register"),
     url(r'^login/$', views.LoginView, name='login'),
-    url(r'^accounts/login/$', views.LoginView, name='login'),
-    url(r'^accounts/logout/$', views.LogoutView, name='logout', kwargs={'next_page': '/'}),
+    url(r'^accounts/login/$', views.LoginView.as_view(), name='login'),
+    url(r'^accounts/logout/$', views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}),
 ]
