@@ -20,6 +20,7 @@ from django.contrib.auth import views
 
 urlpatterns = [
     url('admin/', admin.site.urls),
+    url(r'^user/', include('my_app.urls')),
     url(r'',include('my_app.urls')),
     #url(r'^register$',views.reg,name="register"),
     url(r'^login/$', views.LoginView, name='login'),
