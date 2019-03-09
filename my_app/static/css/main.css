@@ -43,7 +43,7 @@ a.comment-btn{
     text-align: center;
 }
 .commenttitle{
-    font-size: 20px;
+    font-size: 70px;
     /*color: rgb(92, 166, 226)*/
     color: white;
 }
@@ -61,7 +61,9 @@ body{
 }
 
 
-
+.navbar{
+    position: relative;
+}
 .loader{
     filter:hue-rotate(0deg);
     background-image: url("https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e");
