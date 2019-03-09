@@ -20,7 +20,7 @@ class PostListView(ListView):
     model=Post
     def get_queryset(self):
         return Post.objects.filter(publish_date__lte=timezone.now()).order_by('-publish_date')
-
+    
 
 class PostDetailView(DetailView):
     model=Post
@@ -75,7 +75,7 @@ def Apply(request,pk):
 
 
 class DeletePostView(LoginRequiredMixin,DeleteView):
-    model=Post
+    model=Post 
     success_url=reverse_lazy("my_app:post_list")
 
 
@@ -177,7 +177,7 @@ def profile(request):
 
 
 class ProfileView(ListView):
-    model=Post
+    model=Post 
     template_name="profile_list.html"
     
 

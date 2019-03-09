@@ -6,14 +6,18 @@
            
         {% for posts in post_list %}
            {% ifequal posts.author user %}
-           
            <div class="post">
-           <div class="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
+           <div class="posttitle" id="postt"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
            <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div>
            <div><strong>{{posts.author|title}}</strong></div>
            {% if posts.publish_date %}
            <div class="date">{{posts.publish_date}}</div>
+           {% ifnotequal posts.author user %}
            <a class="btn btn-info comment-btn" href="{% url 'my_app:comment_post' pk=posts.pk %}">Add Comment</a>
+           {% endifnotequal %}          
+           {% ifequal posts.author user %}
+           <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=posts.pk %}">Publish</a>
+           {% endifequal %}
            {% else %}
            <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=posts.pk %}">Publish</a>
            {% endif %}
@@ -25,5 +29,10 @@
            {% endfor %}
 
      </div>
+
+<script>
+      username = document.getElementsByClassName('.techfont')[0];
+
+</script>
 
 {% endblock %}  
