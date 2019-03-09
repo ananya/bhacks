@@ -57,7 +57,7 @@ class UpdatePostView(LoginRequiredMixin,UpdateView):
     model=Post
 
 class DeletePostView(LoginRequiredMixin,DeleteView):
-    model=Post
+    model=Post 
     success_url=reverse_lazy("my_app:post_list")
 
 
@@ -157,7 +157,7 @@ def profile(request):
 
 
 class ProfileView(ListView):
-    model=Post
+    model=Post 
     template_name="profile_list.html"
     
 
