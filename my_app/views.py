@@ -158,10 +158,7 @@ def reg(request):
 
             # profile.type_of_user='type_of_user'
         
-<<<<<<< HEAD
-=======
             profile.facebook=profile.facebook
->>>>>>> 84a0e561167d0294cf809d054f267544971d55ba
             
 
             if 'profile_pic' in request.FILES:
