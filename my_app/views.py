@@ -157,7 +157,7 @@ def reg(request):
             # profile.type_of_user='type_of_user'
         
             profile.facebook=profile.facebook
-            
+
 
             if 'profile_pic' in request.FILES:
                 profile.profile_pic=request.FILES['profile_pic']
@@ -186,3 +186,16 @@ def get_user_profile(request, username):
     user = User.objects.get(username=username)
     post_list = Post.objects.all()
     return render(request, 'my_app/user_profile.html', {"user":user, "post_list":post_list})
+
+
+def get_mentors(request):
+    # user = User.objects.get(username=username)
+    pairing_list = Pairing.objects.all()
+    
+    # final_id=idd[25:]
+    # print(final_id)
+    return render(request, 'my_app/pairing_list.html', { "pairing_list":pairing_list})
+
+# class MentorList(ListView):
+#     model=Pairing
+#     template_name="pairing_list.html"
