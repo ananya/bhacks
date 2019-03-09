@@ -6,7 +6,7 @@
         <div class="post">
         <div class="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
         <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div>
-        <div><strong>{{posts.author|title}}</strong></div>
+        <div id="post_title"><strong>Anonymus</strong></div>
         <div class="date">{{posts.publish_date}}</div>
         <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
         <a class="btn btn-info comment-btn" href="{% url 'my_app:comment_post' pk=posts.pk %}">Add Comment</a>
