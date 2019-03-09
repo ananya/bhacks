@@ -8,8 +8,14 @@ class PostForm(forms.ModelForm):
         fields=('title','text')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'text': forms.Textarea(attrs={'class': 'editable medium-editor-textarea postcontent'}),
+            'title': forms.Textarea(attrs={
+                'class': 'editable medium-editor-textarea postcontent form-control',
+                'rows': '2'
+                }),
+            'text': forms.Textarea(attrs={
+                'class': 'editable medium-editor-textarea postcontent form-control',
+                'rows': '4'
+                }),
         }
 
 
@@ -26,7 +32,7 @@ class CommentForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
 
-    password=forms.CharField(widget=forms.PasswordInput())
+    password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'text-center'}))
     class Meta():
         model=User
         fields=('username','password','email')

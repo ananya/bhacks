@@ -1,12 +1,15 @@
 {% extends 'my_app/base.html' %}
 {% block body_block %}
-<div class="center">
+<div>
     {% for posts in post_list %}
       {% if posts.publish_date %}
-        <div class="post">
-        <div class="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
-        <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div>
-        <div><strong>{{posts.author|title}}</strong></div>
+      <div class="card">
+      <div class="card-header">
+        <a href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{posts.text|truncatewords:20|safe|linebreaksbr}}</h5>
+        <p class="card-text"><strong>Anonymous</strong></p>
         <div class="date">{{posts.publish_date}}</div>
         <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
         {% ifequal posts.pk x %}
@@ -15,9 +18,18 @@
         <a class="btn btn-info comment-btn" href="{% url 'my_app:apply' pk=posts.pk %}">Apply</a>
         {% endifequal %}
         </div>
+      </div>
         {% endif %}
 
         {% endfor %}
 </div>
+<style type="text/css">
+    .card {
+        margin: 25px 0;
+        opacity: 0.7;
+        font-size: 30px;
+        font-weight: 400;
+    }
+</style>
 
 {% endblock %}
