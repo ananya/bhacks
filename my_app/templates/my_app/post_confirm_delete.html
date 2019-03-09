@@ -1,10 +1,34 @@
 {% extends 'my_app/base.html' %}
 {% block body_block %}
-<div>
+<!-- <div class="text-center">
        <form method="post">
            {% csrf_token %}
-           <h4>Are you sure that you want to delete <strong>{{object}}</strong>!</h4>
-           <input type="submit" value="Confirm" class="btn btn-danger">
+           <div id="deletemessage">
+           <h4 id="deletetext">Are you sure that you want to delete <strong>{{object}}</strong>!</h4>
+           <input type="submit" value="Confirm" class="btn btn-lg btn-danger">
+           </div>
        </form> 
-</div> 
+</div>  -->
+<div class="center">
+<div class="card text-center" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><strong>Delete</strong></h5>
+    <form method="post">
+           {% csrf_token %}
+    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+    <p class="card-text">Are you sure that you want to delete <strong>{{object}}</strong>? </p>
+    <input type="submit" value="Confirm" class="btn btn-lg btn-danger">
+    <a href="{% url 'my_app:post_list' %}" type="submit" value="Confirm" class="btn btn-lg btn-success">Cancel</a>
+    </form> 
+    <!-- <a href="#" class="card-link">Card link</a> -->
+    <!-- <a href="#" class="card-link">Another link</a> -->
+  </div>
+</div>
+</div>
+<style type="text/css">
+	.card{
+		margin-top: 30%;
+		margin-left: 10%;
+	}
+</style>
 {% endblock %}  

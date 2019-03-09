@@ -37,9 +37,11 @@ class PostDetailView(DetailView):
 @login_required
 def CreatePost(request):
     if(request.method=="POST"):
+        print(request.POST)
         form=PostForm(data=request.POST)
         if form.is_valid():
             post=form.save(commit=False)
+            post.title = post.title
             post.author=request.user
             post.save()
             return redirect('my_app:post_detail',pk=post.pk)
