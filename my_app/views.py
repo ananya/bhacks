@@ -155,7 +155,9 @@ def reg(request):
 
             profile.type_of_user='type_of_user'
         
+            profile.facebook=profile.facebook
             
+
             if 'profile_pic' in request.FILES:
                 profile.profile_pic=request.FILES['profile_pic']
             

@@ -53,6 +53,7 @@ class User_info(models.Model):
     username=models.OneToOneField(User,on_delete=models.CASCADE)
     profilepic=models.ImageField(blank=True,upload_to='profilePic')
     type_of_user=models.CharField(max_length=250,choices=CHOICES,default='student')
+    facebook = models.CharField(max_length=50, default='facebook login')
     
     def __str__(self):
         return self.username.username
@@ -65,6 +66,6 @@ class Pairing(models.Model):
     Ack2 = models.BooleanField(default = False)
     Ack3 = models.BooleanField(default = False)
     Ack4 = models.BooleanField(default = False)
-
-    def get_ack1(self):
-        return self.Ack1
+    
+    def __str__(self):
+        return str(self.mentor)
