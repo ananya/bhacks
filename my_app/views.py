@@ -37,9 +37,11 @@ class PostDetailView(DetailView):
 @login_required
 def CreatePost(request):
     if(request.method=="POST"):
+        print(request.POST)
         form=PostForm(data=request.POST)
         if form.is_valid():
             post=form.save(commit=False)
+            post.title = post.title
             post.author=request.user
             post.save()
             return redirect('my_app:post_detail',pk=post.pk)
@@ -156,7 +158,10 @@ def reg(request):
 
             # profile.type_of_user='type_of_user'
         
+<<<<<<< HEAD
+=======
             profile.facebook=profile.facebook
+>>>>>>> 84a0e561167d0294cf809d054f267544971d55ba
             
 
             if 'profile_pic' in request.FILES:
