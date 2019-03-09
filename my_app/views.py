@@ -134,8 +134,9 @@ def reg(request):
 
             profile=Profileform.save(commit=False)
             profile.username=user
+            print(profile.type_of_user)
 
-            profile.type_of_user='type_of_user'
+            # profile.type_of_user='type_of_user'
         
             
             if 'profile_pic' in request.FILES:

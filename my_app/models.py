@@ -52,7 +52,7 @@ CHOICES = (
 class User_info(models.Model):
     username=models.OneToOneField(User,on_delete=models.CASCADE)
     profilepic=models.ImageField(blank=True,upload_to='profilePic')
-    type_of_user=models.CharField(max_length=250,choices=CHOICES,default='student')
+    type_of_user=models.CharField(max_length=250,choices=CHOICES)
    
     def __str__(self):
         return self.username.username
