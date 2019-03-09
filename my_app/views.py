@@ -152,8 +152,9 @@ def reg(request):
 
             profile=Profileform.save(commit=False)
             profile.username=user
+            print(profile.type_of_user)
 
-            profile.type_of_user='type_of_user'
+            # profile.type_of_user='type_of_user'
         
             profile.facebook=profile.facebook
             
