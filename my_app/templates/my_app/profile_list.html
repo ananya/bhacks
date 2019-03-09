@@ -25,10 +25,10 @@
               {% endif %}
                <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
             </div>
+            </div>
             {% else %}
             {% endifequal %}
-            {% endfor %}
-          </div>           
+            {% endfor %}           
           <style type="text/css">
     .card {
         margin: 25px 0;
@@ -38,6 +38,9 @@
     }
     #heading{
         color: white;
+        font-size: 70px;
+        font-weight: 500;
+        margin-top:30%;
     }
 </style>
 <script>
