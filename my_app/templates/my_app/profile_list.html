@@ -14,19 +14,22 @@
               <a href="{% url 'my_app:comment_post' pk=posts.pk %}" class="btn btn-primary">Apply</a>
               {% if posts.publish_date %}
                <div class="date">{{posts.publish_date}}</div>
-               <a class="btn btn-info comment-btn" href="{% url 'my_app:comment_post' pk=posts.pk %}">Apply</a>
-               {% else %}
+               {% ifnotequal posts.author user %}    
+               <a class="btn btn-info comment-btn" href="{% url 'my_app:comment_post' pk=posts.pk %}">Add Comment</a>
+               {% endifnotequal %} 
+               {% ifequal posts.author user %}
                <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=posts.pk %}">Publish</a>
-               {% endif %}
+               {% endifequal %}
+               {% else %}
+              <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=posts.pk %}">Publish</a>
+              {% endif %}
                <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
             </div>
+            {% else %}
+            {% endifequal %}
+            {% endfor %}
           </div>           
-           {% else %} 
-           {% endifequal %}
-           {% endfor %}
-
-     <!-- </div> -->
-<style type="text/css">
+          <style type="text/css">
     .card {
         margin: 25px 0;
         opacity: 0.7;
@@ -37,4 +40,8 @@
         color: white;
     }
 </style>
+<script>
+  username = document.getElementsByClassName('.techfont')[0];
+
+</script>
 {% endblock %}  

@@ -3,7 +3,7 @@ from django.views.generic import TemplateView,ListView,DetailView,CreateView,Det
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy,reverse
-from my_app.models import Post,Comment,User_info
+from my_app.models import Post,Comment,User_info,Pairing
 from my_app.forms import PostForm,CommentForm,UserForm,UserProfileForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -20,7 +20,7 @@ class PostListView(ListView):
     model=Post
     def get_queryset(self):
         return Post.objects.filter(publish_date__lte=timezone.now()).order_by('-publish_date')
-
+    
 
 class PostDetailView(DetailView):
     model=Post
@@ -58,8 +58,26 @@ class UpdatePostView(LoginRequiredMixin,UpdateView):
     form_class=PostForm
     model=Post
 
+@login_required
+def Apply(request,pk):
+    print(pk)
+    print('something somrg')
+    # model=Pairing
+    # pairing=get_object_or_create(Pairing)
+    post = Post.objects.get(pk = pk)
+    pairing, boo = Pairing.objects.get_or_create(post=post, mentor=request.user)
+    print(pairing)
+    pairing.money = 5
+    pairing.save()
+    post_pk=pairing.post.pk
+    # print(pairing.post)
+    # pairing.save()
+    return redirect('my_app:get_user_profile', username=pairing.mentor)
+    # a href = "{% url 'my_app:get_user_profile' username=pairing.mentor %}"
+
+
 class DeletePostView(LoginRequiredMixin,DeleteView):
-    model=Post
+    model=Post 
     success_url=reverse_lazy("my_app:post_list")
 
 
@@ -140,7 +158,12 @@ def reg(request):
 
             # profile.type_of_user='type_of_user'
         
+<<<<<<< HEAD
+=======
+            profile.facebook=profile.facebook
+>>>>>>> 84a0e561167d0294cf809d054f267544971d55ba
             
+
             if 'profile_pic' in request.FILES:
                 profile.profile_pic=request.FILES['profile_pic']
             
@@ -159,7 +182,7 @@ def profile(request):
 
 
 class ProfileView(ListView):
-    model=Post
+    model=Post 
     template_name="profile_list.html"
     
 

@@ -9,10 +9,16 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">{{posts.text|truncatewords:20|safe|linebreaksbr}}</h5>
-        <p class="card-text">{{posts.author|title}}</p>
-        <a href="{% url 'my_app:comment_post' pk=posts.pk %}" class="btn btn-primary">Apply</a>
+        <p class="card-text"><strong>Anonymous</strong></p>
+        <div class="date">{{posts.publish_date}}</div>
+        <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
+        {% ifequal posts.pk x %}
+        <i class="fa fa-check-circle" style="font-size:48px;color:green"></i>
+        {% else %}
+        <a class="btn btn-info comment-btn" href="{% url 'my_app:apply' pk=posts.pk %}">Apply</a>
+        {% endifequal %}
+        </div>
       </div>
-    </div>
         {% endif %}
 
         {% endfor %}
