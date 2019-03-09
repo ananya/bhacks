@@ -3,7 +3,7 @@ from django.views.generic import TemplateView,ListView,DetailView,CreateView,Det
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy,reverse
-from my_app.models import Post,Comment,User_info
+from my_app.models import Post,Comment,User_info,Pairing
 from my_app.forms import PostForm,CommentForm,UserForm,UserProfileForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -55,6 +55,24 @@ class UpdatePostView(LoginRequiredMixin,UpdateView):
     redirect_field_name='my_app/post_detail.html'
     form_class=PostForm
     model=Post
+
+@login_required
+def Apply(request,pk):
+    print(pk)
+    print('something somrg')
+    # model=Pairing
+    # pairing=get_object_or_create(Pairing)
+    post = Post.objects.get(pk = pk)
+    pairing, boo = Pairing.objects.get_or_create(post=post, mentor=request.user)
+    print(pairing)
+    pairing.money = 5
+    pairing.save()
+    post_pk=pairing.post.pk
+    # print(pairing.post)
+    # pairing.save()
+    return redirect('my_app:get_user_profile', username=pairing.mentor)
+    # a href = "{% url 'my_app:get_user_profile' username=pairing.mentor %}"
+
 
 class DeletePostView(LoginRequiredMixin,DeleteView):
     model=Post

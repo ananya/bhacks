@@ -9,7 +9,11 @@
         <div><strong>{{posts.author|title}}</strong></div>
         <div class="date">{{posts.publish_date}}</div>
         <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
-        <a class="btn btn-info comment-btn" href="{% url 'my_app:comment_post' pk=posts.pk %}">Add Comment</a>
+        {% ifequal posts.pk x %}
+        <i class="fa fa-check-circle" style="font-size:48px;color:green"></i>
+        {% else %}
+        <a class="btn btn-info comment-btn" href="{% url 'my_app:apply' pk=posts.pk %}">Apply</a>
+        {% endifequal %}
         </div>
         {% endif %}
 

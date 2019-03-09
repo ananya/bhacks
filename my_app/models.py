@@ -41,7 +41,7 @@ class Comment(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('my_app:post_detail',kwargs={'pk':self.post.pk})
+        return reverse('my_app:post_list',kwargs={'pk':self.post.pk})
 
 
 CHOICES = (
@@ -53,6 +53,18 @@ class User_info(models.Model):
     username=models.OneToOneField(User,on_delete=models.CASCADE)
     profilepic=models.ImageField(blank=True,upload_to='profilePic')
     type_of_user=models.CharField(max_length=250,choices=CHOICES,default='student')
-   
+    
     def __str__(self):
         return self.username.username
+
+class Pairing(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    mentor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    money = models.IntegerField(default = 0)
+    Ack1 = models.BooleanField(default = True)
+    Ack2 = models.BooleanField(default = False)
+    Ack3 = models.BooleanField(default = False)
+    Ack4 = models.BooleanField(default = False)
+
+    def get_ack1(self):
+        return self.Ack1
