@@ -36,12 +36,15 @@ class CommentForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
 
-    password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'text-center'}))
+    password=forms.CharField(widget=forms.PasswordInput(attrs={'class':' register'}))
     class Meta():
         model=User
         fields=('username','password','email')
 
 class UserProfileForm(forms.ModelForm):
+    facebook=forms.CharField(widget=forms.TextInput(attrs={
+        'class':'register'
+    }))
     class Meta():
         model=User_info
         fields=('profilepic','type_of_user','facebook')
