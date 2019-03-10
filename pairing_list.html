@@ -1,0 +1,13 @@
+{% extends 'my_app/base.html' %}
+{% block body_block %}
+<div class="center">
+    {% for pairs in pairing_list %}
+        {% ifequal pairs.post.author request.user %}
+            
+        <li><a href = "{% url 'my_app:get_user_profile' username=pairs.mentor %}">{{pairs.mentor}}</a></li>
+        
+        {% endifequal %}
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -2,7 +2,7 @@
 {% extends 'my_app/base.html' %}
 {% block body_block %}
 {% if registered %}
-<p class="text-center">Thank u for registering !!</p>
+<p class="text-center" id="registered" ><strong>Thank u for registering !!</strong></p>
 {% else %}
 <div class="row container" >
 <div class="col-md-4"></div>
@@ -20,4 +20,11 @@
 </div>
 
 {% endif %}
+<style>
+        .text-center{
+            text-align: center !important;
+            color: aliceblue;
+            font-size: 3rem;
+        }
+    </style>
 {% endblock %}  

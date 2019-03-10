@@ -14,7 +14,7 @@
        <div class ="date">{{post.publish_date}}</div>
 </div>
 
-<div class="post">
+<!-- <div class="post">
     <div class="commenttitle"><b>{{post.Comment.all.count}} Comment</b></div>
         {% for comment in post.Comment.all %}
         <h5><strong>{{comment.author|title}}</strong>:{{comment.text|safe|linebreaksbr}}</h5>
@@ -22,14 +22,25 @@
        <a href="{% url 'my_app:update_post' pk=post.pk %}"><span class="fa fa-pencil-alt"></span></a>
        <a class="delete" href="{% url 'my_app:delete_post' pk=post.pk %}"><span class="fa fa-trash-alt"></span></a> 
         {% endifequal %}
-        {% endfor %}
-</div>
-       {% else %}
-       <p>{{post.create_date}}</p>
-       <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=post.pk %}">Publish</a>
-</div>
-       {% endif %}
+        {% endfor %} -->
+<!-- </div> -->
+       <!-- {% else %} -->
+       <!-- <p>{{post.create_date}}</p> -->
+       <!-- <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=post.pk %}">Publish</a> -->
+<!-- </div> -->
+       <!-- {% endif %} -->
+<!-- </div> -->
+<a  id="mentor" href= "{% url 'my_app:mentor_list' %}">Mentor List</a>
+<style>
+       #mentor{
+              font-size: 2rem;
+              color: aliceblue;
+              margin-top:10%; 
+       }
 
-<a href= "{% url 'my_app:mentor_list' %}">Mentor List</a>
-
+       .post{
+              opacity: 0.65;
+              border-radius:7%; 
+       }
+</style>
 {% endblock %}  
